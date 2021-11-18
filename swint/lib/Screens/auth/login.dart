@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swint/Screens/DisCover/discover_screen.dart';
 import 'package:swint/Screens/Home/home_card.dart';
+import 'package:swint/Screens/Home/home_screen.dart';
 import 'package:swint/Screens/auth/phoneverify.dart';
 import 'package:swint/Screens/auth/register.dart';
 import 'package:swint/main.dart';
@@ -120,7 +121,10 @@ class _Login extends State<Login> {
                         color: mycolor[500],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.popAndPushNamed(
+                              context, HomeScreen.routeName);
+                        },
                         child: Text(
                           "Login",
                           style: TextStyle(color: Colors.white, fontSize: 20),

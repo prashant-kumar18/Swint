@@ -8,6 +8,7 @@ import 'package:swint/Screens/auth/login.dart';
 import 'package:swint/Screens/auth/register.dart';
 import 'package:swint/Screens/profile/profile_screen.dart';
 import 'package:swint/Screens/search/search.dart';
+import 'package:swint/components/filemanager.dart';
 import 'package:swint/swipper.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -21,5 +22,6 @@ final Map<String, WidgetBuilder> routes = {
   OpenVideo.routeName: (context) => OpenVideo(),
   OpenStory.routeName: (context) => OpenStory(),
   Login.routeName: (context) => Login(),
-  Register.routeName: (context) => Register()
+  Register.routeName: (context) => Register(),
+  FileManagerUi.routeName: (context) => FileManagerUi()
 };

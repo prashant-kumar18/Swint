@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:swint/Screens/Home/home_screen.dart';
-import 'package:swint/Screens/auth/login.dart';
-import 'package:swint/Screens/auth/register.dart';
-import 'package:swint/swipper.dart';
+import 'package:swint/components/filemanager.dart';
+import 'Screens/auth/login.dart';
 import 'navi_routes.dart';
+import 'package:camera/camera.dart';
 
-void main() {
+List<CameraDescription> cameras = [];
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  cameras = await availableCameras();
+
   runApp(MyApp());
 }
 
@@ -24,7 +29,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorCustom,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // initialRoute: Swipper.routeName,
       routes: routes,
       initialRoute: Login.routeName,
     );

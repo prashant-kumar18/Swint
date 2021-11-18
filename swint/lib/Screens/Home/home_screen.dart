@@ -15,6 +15,7 @@ import 'package:swint/components/custom_navbar.dart';
 import 'package:swint/components/data.dart';
 import 'package:swint/components/enums.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:swint/components/filemanager.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -109,8 +110,12 @@ class HomeMain extends StatelessWidget {
                               alignment: Alignment.center,
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                      context, OpenStory.routeName);
+                                  if (i == 0) {
+                                    Navigator.pushNamed(
+                                        context, FileManagerUi.routeName);
+                                  } else
+                                    Navigator.pushNamed(
+                                        context, OpenStory.routeName);
                                 },
                                 child: Stack(
                                   children: [
