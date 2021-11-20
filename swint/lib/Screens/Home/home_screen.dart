@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:swint/Screens/DisCover/discover_screen.dart';
 import 'package:swint/Screens/Home/home_card.dart';
 import 'package:swint/Screens/Home/openstory.dart';
@@ -15,7 +16,9 @@ import 'package:swint/components/custom_navbar.dart';
 import 'package:swint/components/data.dart';
 import 'package:swint/components/enums.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:swint/components/filemanager.dart';
+import 'package:swint/Screens/others/filemanager.dart';
+import 'package:swint/main.dart';
+import 'package:swint/provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -83,6 +86,7 @@ class HomeMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
       color: Colors.white,
       child: SingleChildScrollView(
@@ -100,7 +104,7 @@ class HomeMain extends StatelessWidget {
                       children: [
                         Container(
                           height: MediaQuery.of(context).size.height * 0.09,
-                          width: MediaQuery.of(context).size.width * 0.5,
+                          width: MediaQuery.of(context).size.width * 0.55,
                           child: ListView.builder(
                             itemCount: 10,
                             itemBuilder: (ctx, i) => Container(
@@ -159,80 +163,62 @@ class HomeMain extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    Container(
-                      width: 150,
-                      height: 55,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(35),
-                        color: Colors.black.withOpacity(0.05),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          GestureDetector(
-                            onTap: () {},
-                            child: Wrap(
-                              direction: Axis.horizontal,
+                    Consumer<DataProvider>(
+                      builder: (ctx, dataprovider, _) => DropdownButton(
+                          underline: Container(),
+                          icon: Container(),
+                          hint: Chip(
+                            shadowColor: dataprovider.statusccolor(),
+                            elevation: 7,
+                            backgroundColor: dataprovider.statusccolor(),
+                            label: Row(
                               children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.5),
-                                              spreadRadius: 2,
-                                              blurRadius: 5,
-                                              offset: Offset(0,
-                                                  3), // changes position of shadow
-                                            ),
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          color: Colors.white,
-                                        ),
-                                        height: 45,
-                                        width: 45,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
-                                          child: CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                'assets/images/avtar.jpg'),
-                                            radius: 25,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const Expanded(
-                                      child: Text(
-                                        "Alina",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 15),
-                                      child: SvgPicture.asset(
-                                        "assets/icons/tick.svg",
-                                        height: 21,
-                                        color: Color(0xff00d289),
-                                      ),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Text(
+                                    " ${dataprovider.statusname()} ",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  ),
                                 ),
+                                Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/tick.svg",
+                                      fit: BoxFit.fitHeight,
+                                      width: 20,
+                                    ))
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
+                          alignment: Alignment.center,
+                          onChanged: (v) {
+                            dataprovider.statusfun(v);
+                          },
+                          items: [
+                            DropdownMenuItem(
+                                value: 0,
+                                child: Text(
+                                  " Busy ",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.red),
+                                )),
+                            DropdownMenuItem(
+                                value: 1,
+                                child: Text(
+                                  " Away ",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.blue),
+                                )),
+                            DropdownMenuItem(
+                                value: 2,
+                                child: Text(
+                                  " Online ",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.green),
+                                )),
+                          ]),
+                    )
                   ],
                 ),
               ),

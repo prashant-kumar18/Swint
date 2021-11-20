@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:swint/components/filemanager.dart';
+import 'package:swint/Screens/auth/selectint.dart';
+import 'package:swint/Screens/others/filemanager.dart';
+import 'package:swint/provider/provider.dart';
 import 'Screens/auth/login.dart';
-import 'navi_routes.dart';
+import 'components/navi_routes.dart';
 import 'package:camera/camera.dart';
+import 'package:provider/provider.dart';
 
 List<CameraDescription> cameras = [];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   cameras = await availableCameras();
-
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (ctx) => DataProvider(),
+        builder: (ctx, _) => MyApp(),
+      )
+    ],
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,6 +38,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: routes,
+      // home: SelectInt(),
       initialRoute: Login.routeName,
     );
   }

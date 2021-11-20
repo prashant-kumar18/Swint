@@ -8,6 +8,8 @@ import 'package:swint/Screens/auth/phoneverify.dart';
 import 'package:swint/Screens/auth/register.dart';
 import 'package:swint/main.dart';
 
+import '../../swipper.dart';
+
 class Login extends StatefulWidget {
   static String routeName = "/Login";
   const Login({Key? key}) : super(key: key);
@@ -122,8 +124,7 @@ class _Login extends State<Login> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         onPressed: () {
-                          Navigator.popAndPushNamed(
-                              context, HomeScreen.routeName);
+                          Navigator.popAndPushNamed(context, Swipper.routeName);
                         },
                         child: Text(
                           "Login",

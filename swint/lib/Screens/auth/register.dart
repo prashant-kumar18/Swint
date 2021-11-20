@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swint/Screens/DisCover/discover_screen.dart';
 import 'package:swint/Screens/Home/home_card.dart';
 import 'package:swint/Screens/auth/login.dart';
+import 'package:swint/Screens/others/gettingstarted.dart';
 import 'package:swint/main.dart';
 
 class Register extends StatefulWidget {
@@ -150,7 +151,10 @@ class _Register extends State<Register> {
                         color: mycolor[500],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.popAndPushNamed(
+                              context, GettingStarted.routeName);
+                        },
                         child: Text(
                           "Register",
                           style: TextStyle(color: Colors.white, fontSize: 20),
