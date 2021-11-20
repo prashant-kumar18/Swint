@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swint/Screens/Home/home_screen.dart';
 
 class SelectInt extends StatefulWidget {
   static String routeName = "/selectint";
@@ -51,11 +52,13 @@ class _SelectIntState extends State<SelectInt> {
                   ],
                 ),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.popAndPushNamed(context, HomeScreen.routeName);
+                  },
                   minWidth: MediaQuery.of(context).size.width * 0.3,
                   color: Colors.pinkAccent,
                   child: const Text(
-                    "Customize",
+                    "Next",
                     style: TextStyle(color: Colors.white),
                   ),
                   shape: RoundedRectangleBorder(
