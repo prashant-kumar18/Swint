@@ -1,14 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:swint/Screens/Inbox/chat_item.dart';
-import 'package:swint/components/custom_navbar.dart';
-import 'package:swint/components/data.dart';
-import 'package:swint/components/enums.dart';
 
 class SearchScreen extends StatefulWidget {
   static String routeName = "/search";

@@ -7,6 +7,7 @@ import 'package:swint/Screens/Inbox/chat_screen.dart';
 import 'package:swint/Screens/auth/login.dart';
 import 'package:swint/Screens/auth/register.dart';
 import 'package:swint/Screens/auth/selectint.dart';
+import 'package:swint/Screens/others/comment.dart';
 import 'package:swint/Screens/others/gettingstarted.dart';
 import 'package:swint/Screens/profile/profile_screen.dart';
 import 'package:swint/Screens/search/search.dart';
@@ -28,4 +29,5 @@ final Map<String, WidgetBuilder> routes = {
   GettingStarted.routeName: (context) => GettingStarted(),
   FileManagerUi.routeName: (context) => FileManagerUi(),
   SelectInt.routeName: (context) => SelectInt(),
+  PostCommnet.routeName: (context) => PostCommnet(),
 };

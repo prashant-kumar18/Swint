@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swint/Screens/auth/selectint.dart';
+import 'package:swint/Screens/others/comment.dart';
 import 'package:swint/Screens/others/filemanager.dart';
 import 'package:swint/provider/provider.dart';
 import 'Screens/auth/login.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: routes,
-      // home: SelectInt(),
+      // home: PostCommnet(),
       initialRoute: Login.routeName,
     );
   }

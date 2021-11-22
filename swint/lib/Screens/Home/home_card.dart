@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:swint/Screens/others/comment.dart';
 
 class HomeCard extends StatefulWidget {
   final String? dp;
@@ -150,19 +151,25 @@ class _HomeCardState extends State<HomeCard> {
                                         });
                                       },
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.white.withOpacity(0.4),
-                                      ),
-                                      height: 60,
-                                      width: 60,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(17.0),
-                                        child: SvgPicture.asset(
-                                          "assets/icons/comment-option.svg",
-                                          color: Color(0xffffffff),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, PostCommnet.routeName);
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: Colors.white.withOpacity(0.4),
+                                        ),
+                                        height: 60,
+                                        width: 60,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(17.0),
+                                          child: SvgPicture.asset(
+                                            "assets/icons/comment-option.svg",
+                                            color: Color(0xffffffff),
+                                          ),
                                         ),
                                       ),
                                     ),
